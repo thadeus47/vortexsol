@@ -97,5 +97,68 @@ document.addEventListener('DOMContentLoaded', () => {
         console.warn('Hero Slider not initialized. Ensure jQuery and Slick are loaded.');
     }
 
+    const slider = document.querySelector('.brand-slider-row');
+    const sliderWidth = slider.offsetWidth;
+    const singleBrandWidth = slider.querySelector('.single-brand').offsetWidth;
+
+    function resetSlider() {
+        if (slider) {
+            const currentPosition = parseFloat(getComputedStyle(slider).transform.split(',')[4]) || 0;
+            if (currentPosition <= -sliderWidth / 2) {
+                slider.style.transition = 'none'; // Disable transition for instant reset
+                slider.style.transform = `translateX(0)`; // Reset to start
+                // Force reflow
+                slider.offsetHeight;
+                slider.style.transition = 'transform 0s linear'; // Re-enable transition
+                setTimeout(() => {
+                    slider.style.transition = 'transform 20s linear'; // Restore original animation
+                }, 0);
+            }
+        }
+    }
+
+    // Check position every frame
+    function animate() {
+        requestAnimationFrame(animate);
+        resetSlider();
+    }
+
+    animate();
+
+    // Pause on hover
+    slider.addEventListener('mouseenter', () => {
+        slider.style.animationPlayState = 'paused';
+    });
+
+    slider.addEventListener('mouseleave', () => {
+        slider.style.animationPlayState = 'running';
+    });
+
+    // Scroll to Apply Now Section
+    const applyButtons = document.querySelectorAll('.apply-btn');
+    const applySection = document.querySelector('.apply-section');
+
+    applyButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            applySection.scrollIntoView({ behavior: 'smooth' });
+            // Prefill the position dropdown
+            const position = this.closest('.job-card').querySelector('h4').textContent.toLowerCase().replace(/ /g, '-');
+            document.getElementById('position').value = position;
+        });
+    });
+
+    // File Size Validation
+    const cvInput = document.getElementById('cv');
+    const form = document.querySelector('.apply-section form');
+
+    form.addEventListener('submit', function (event) {
+        if (cvInput.files.length > 0) {
+            const fileSize = cvInput.files[0].size / 1024 / 1024; // Convert to MB
+            if (fileSize > 5) {
+                event.preventDefault();
+                alert('File size exceeds 5MB limit. Please upload a smaller file.');
+            }
+        }
+    });
     
 });
