@@ -160,5 +160,22 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
+
+    // Parallax effect for the Key Features section
+    window.addEventListener('scroll', function() {
+        const parallax = document.querySelector('.feature-parallax-section .parallax-bg');
+        if (parallax) {
+            const scrollPosition = window.pageYOffset;
+            const sectionTop = parallax.parentElement.offsetTop;
+            const sectionHeight = parallax.parentElement.offsetHeight;
+            const windowHeight = window.innerHeight;
+
+            // Check if the section is in view
+            if (scrollPosition + windowHeight > sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                const offset = (scrollPosition - sectionTop) * 0.3; // Adjust speed (0.3 for subtle effect)
+                parallax.style.transform = `translateY(${offset}px)`;
+            }
+        }
+    });
     
 });
