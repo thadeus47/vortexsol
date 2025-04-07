@@ -125,12 +125,15 @@
   background: #fff;
   list-style: none;
   padding: 10px 0;
-  margin: 0;
+  margin: 16px;
   min-width: 200px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   visibility: hidden;
   opacity: 0;
   transition: all 0.3s ease;
+}
+#submenu {
+  min-width:340px;
 }
 
 .primary-menu li:hover .submenu {
@@ -1063,7 +1066,7 @@ fea
 /* Testimonial Section */
 .testimonials-section {
   padding: 80px 0;
-  background: #f5f8ff; /* Soft blue background as implied by soft-blue-bg */
+  background: #f7f7f7; /* Soft blue background as implied by soft-blue-bg */
 }
 
 .testimonials-section.section-gap {
@@ -2658,8 +2661,7 @@ FAQ Section
   position: relative;
   display: inline-block;
   font-size: 2.5rem;
-  font-weight: 700;
-  color: #333;
+  
 }
 
 .services-features-section .section-title .title::after {
@@ -2669,7 +2671,7 @@ FAQ Section
   left: 0;
   width: 50%;
   height: 3px;
-  background: linear-gradient(90deg, #007bff, #00c4ff);
+  /* background: linear-gradient(90deg, #007bff, #00c4ff); */
 }
 
 .services-features-section .services-feature-card {
@@ -2778,9 +2780,9 @@ FAQ Section
 }
 
 .services-benefits-section .section-title .title {
-  font-family: 'Dancing Script', cursive;
+  
   font-size: 3rem;
-  font-weight: 700;
+  /* font-weight: 700; */
   color: #333;
   position: relative;
   display: inline-block;
@@ -2793,7 +2795,7 @@ FAQ Section
   left: 0;
   width: 50%;
   height: 3px;
-  background: linear-gradient(90deg, #007bff, #00c4ff);
+  /* background: linear-gradient(90deg, #007bff, #00c4ff); */
 }
 
 .services-benefits-section .benefits-masonry {
@@ -3023,7 +3025,7 @@ FAQ Section
 /* Pricing Packages Section (PamPam-Inspired Design) */
 .pricing-packages-section {
   padding: 80px 0;
-  background: #fff; /* Clean white background */
+  background: #f9f9f9; 
 }
 
 .pricing-packages-section .section-title .title {
